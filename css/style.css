@@ -5596,7 +5596,7 @@ textarea:required {
 }
 .ico-progress li.title {
    float: left;
-   padding-left: 30px;
+   padding-left: 20%;
    font-weight: 500;
    color: #fff
 }
@@ -5645,7 +5645,7 @@ textarea:required {
     width: 1px;
     height: 26px;
     bottom: -5px;
-    left: 12%;
+    left: 20%;
     background: #fff
 }
 

@@ -128,7 +128,7 @@
 
 
     $('.simple_timer').syotimer({
-        year: 2025,
+        year: 2024,
         month: 11,
         day: 9,
         hour: 20,
