@@ -93,7 +93,7 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
       const formatresult=formatAccount(result);
       console.log("result-format--->",formatresult);
 
-      button.innerText = result;
+      button.innerText = formatresult;
      
     } catch (error) {
       console.log(error);
