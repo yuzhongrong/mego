@@ -19,27 +19,6 @@ const connection = new Connection('https://api.mainnet-beta.solana.com');
 
 
 
- // 连接钱包的方法
- const connectWallet = async () => {
-    // const wallet = await checkWallet();
-    // if (!wallet) {
-    //     return;
-    // }
-
-
-    try {
-        const provider = window.okxwallet.solana;
-        const resp = await provider.connect();
-        console.log(resp.publicKey.toString());
-        // 26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo
-        // { address: string, publicKey: string }
-        
-      } catch (error) {
-        console.log(error);
-        // { code: 4001, message: "User rejected the request."}
-      }
-
-};
 
   // 创建转账交易 (与之前一样)
 async function createTransferTransaction(walletAddress, amountInLamports) {
@@ -110,10 +89,10 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
       // 26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo
       // { address: string, publicKey: string }
     //   resultDom.innerHTML = result;
-      console.log(result);
+      console.log("result---> "+result);
       const formatresult=formatAccount(result);
-      console.log(formatresult);
-      
+      console.log("result-format--->"+formatresult);
+
       button.innerText = result;
      
     } catch (error) {
