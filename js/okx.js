@@ -127,11 +127,11 @@ closeButton.onclick = function() {
     //判断当前链接按钮内容
     console.log("--connectbtn.innerText-->",connectbtn.innerText)
     
-    // const walletAddress = await isOKXWalletConnected();
-    // if (!walletAddress) {
-    //     alert("Please connect OKX wallet first!");
-    //     return;
-    // }
+    const walletAddress = await isOKXWalletConnected();
+    if (!walletAddress) {
+        alert("Please connect OKX wallet first!");
+        return;
+    }
 
 
 
