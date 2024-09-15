@@ -76,8 +76,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#faq">FAQ</a>
                     </li>
+          
 
-                    <li class="lh-55px"><a href="#" class="btn login-btn ml-50">Contact Us</a></li>
+                    <li class="lh-55px"><button href="#" class="btn login-btn ml-50" id="buyButton" onclick="getAccount()">Connect Wallet</button></li>
                 </ul>
             </div>
         </div>
@@ -655,6 +656,13 @@
 
     <!-- script js -->
     <script src="js/script.js"></script>
+
+    <!--load okx wallet-->
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@okx/web3"></script> -->
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script src="js/okx.js"></script>
+    
 
 </body>
 
