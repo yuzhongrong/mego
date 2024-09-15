@@ -6336,6 +6336,7 @@ body.light-version {
 
 .modal-header h2 {
     margin: 0;
+    color: #000; /* 设置标题的字体颜色为黑色 */
 }
 
 .modal-header .close {
@@ -6382,3 +6383,10 @@ body.light-version {
 .modal-footer button:hover {
     background-color: #0056b3;
 }
+
+
+
+.modal-body label {
+    color: #000; /* 设置输入框标签的字体颜色为黑色 */
+}
+
