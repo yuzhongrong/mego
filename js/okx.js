@@ -3,7 +3,7 @@
 
 
 // 获取 Buy按钮
-const connectSolanaButton = document.querySelector('.connectSolanaButton');
+const buy = document.getElementById("buyButton");
 
 // Solana网络连接
 const connection = new Connection('https://api.mainnet-beta.solana.com');
@@ -33,6 +33,7 @@ const connection = new Connection('https://api.mainnet-beta.solana.com');
         console.log(resp.publicKey.toString());
         // 26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo
         // { address: string, publicKey: string }
+        
       } catch (error) {
         console.log(error);
         // { code: 4001, message: "User rejected the request."}
@@ -105,10 +106,11 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
     try {
       const provider = window.okxwallet.solana;
       const resp = await provider.connect();
-      const result = `publicKey: ${resp.publicKey.toString()}`;
+      const result = `${resp.publicKey.toString()}`;
       // 26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo
       // { address: string, publicKey: string }
     //   resultDom.innerHTML = result;
+      button.innerText = formatAccount(result);
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -117,6 +119,15 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
     console.log(error);
     }
 
+}
+
+function formatAccount(account) {
+    if (account.length <= 8) {
+        return account; // 如果账号长度小于等于8，直接返回
+    }
+    const start = account.slice(0, 4); // 获取前四位
+    const end = account.slice(-4); // 获取后四位
+    return `${start}....${end}`; // 合并前四位和后四位，中间用省略号
 }
 
 
