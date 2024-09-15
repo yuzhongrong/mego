@@ -3,7 +3,7 @@
 
 
 // 获取 Buy按钮
-const buy = document.getElementById("buyButton");
+const button = document.getElementById("buyButton");
 
 // Solana网络连接
 const connection = new Connection('https://api.mainnet-beta.solana.com');
@@ -93,7 +93,7 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
       const formatresult=formatAccount(result);
       console.log("result-format--->",formatresult);
 
-      buy.innerText = result;
+      button.innerText = result;
      
     } catch (error) {
       console.log(error);
