@@ -2,8 +2,15 @@
   const { Connection, PublicKey, Transaction, SystemProgram } = solanaWeb3;
 
 
-// 获取 Buy按钮
-const button = document.getElementById("buyButton");
+// 获取 connect按钮
+const connectbtn = document.getElementById("connect");
+
+
+ // 获取购买限额弹框
+ var modal = document.getElementById("buyModal");
+ var buyButton = document.getElementById("buyButton");
+ var closeButton = document.getElementsByClassName("close")[0];
+ var confirmButton = document.getElementById("confirmPurchase");
 
 // Solana网络连接
 const connection = new Connection('https://api.mainnet-beta.solana.com');
@@ -82,7 +89,7 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
       const formatresult=formatAccount(result);
       console.log("result-format--->",formatresult);
 
-      button.innerText = formatresult;
+      connectbtn.innerText = formatresult;
      
     } catch (error) {
       console.log(error);
@@ -100,6 +107,66 @@ function formatAccount(account) {
     const start = account.slice(0, 4); // 获取前四位
     const end = account.slice(-4); // 获取后四位
     return `${start}....${end}`; // 合并前四位和后四位，中间用省略号
+}
+
+//点击购买token 弹框处理
+
+ // 当点击购买按钮时，显示对话框
+ buyButton.onclick = function() {
+    modal.style.display = "block";
+}
+
+// 当点击关闭按钮时，隐藏对话框
+closeButton.onclick = function() {
+    modal.style.display = "none";
+}
+
+ // 当点击确认按钮时，检查数量并提交
+ confirmButton.onclick = function() {
+
+    //判断当前链接按钮内容
+    console.log("--connectbtn.innerText-->",connectbtn.innerText)
+    
+    const walletAddress = await isOKXWalletConnected();
+    if (!walletAddress) {
+        alert("Please connect OKX wallet first!");
+        return;
+    }
+
+
+
+    var solAmount = document.getElementById("solAmount").value;
+    if (solAmount >= 1 && solAmount <= 10) {
+        alert("you choose to buy " + solAmount + " SOL");
+        // 这里你可以添加购买逻辑，如发出请求
+        modal.style.display = "none"; // 关闭对话框
+
+        //创建一个交易 签名并发送 
+        alert('please create a transation to send')
+
+    } else {
+        alert("Purchase quantity must be between 1 and 10 SOL!");
+    }
+}
+
+
+
+// 检查 OKX 钱包是否已连接
+async function isOKXWalletConnected() {
+    if (window.okxwallet) {
+        try {
+            const resp = await window.okxwallet.request({
+                method: 'solana_accounts' // 使用 OKX 插件的 Solana API
+            });
+            return resp && resp[0] ? resp[0] : null; // 返回钱包地址
+        } catch (err) {
+            console.error("Unable to get OKX wallet address", err);
+            return null;
+        }
+    } else {
+        alert("Please install the OKX wallet plug-in!");
+        return null;
+    }
 }
 
 
