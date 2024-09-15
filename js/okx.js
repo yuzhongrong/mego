@@ -65,22 +65,11 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
 
   async function getAccount() {
 
-
-    // if (window.okxwallet) {
-    //     console.log('OKX Wallet found.');
-    //     if (window.okxwallet.solana) {
-    //         console.log('Solana API found in OKX Wallet.');
-    //     } else {
-    //         console.log('Solana API is not available in OKX Wallet.');
-    //     }
-    // } else {
-    //     console.log('OKX Wallet is not installed or enabled.');
-    // }
-
-    // if (window.solana && window.solana.isPhantom) {
-    //     console.log("Phantom Wallet is available");
-    // }
-
+    if (typeof window.okxwallet == 'undefined') {
+        console.log('OKX is not installed!');
+        alert('OKX is not installed!')
+        return
+     }
 
     try {
       const provider = window.okxwallet.solana;
