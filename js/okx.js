@@ -70,7 +70,7 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
 
 
 
-  async function getAccount() {
+  export async function getAccount() {
 
     if (typeof window.okxwallet == 'undefined') {
         console.log('OKX is not installed!');
