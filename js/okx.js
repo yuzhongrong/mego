@@ -3,7 +3,7 @@
 
 
 // 获取 connect按钮
-const connectbtn = document.getElementById("connect");
+const connectbtn = document.getElementById("connectbtn");
 
 
  // 获取购买限额弹框
