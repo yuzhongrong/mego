@@ -18,9 +18,9 @@ const connection = new Connection('https://api.mainnet-beta.solana.com');
  // 检查 OKX 或 Solana 钱包是否已经安装
  const checkWallet = async () => {
     if (typeof window.okxwallet !== 'undefined') {
-        console.log('OKX is installed!');
+        console.log('OKX wallet extension is installed!');
     }else{
-        console.log('OKX is not installed!');
+        console.log('OKX wallet extension is not installed!');
     }
 };
 
@@ -73,8 +73,8 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
   async  function getAccount() {
 
     if (typeof window.okxwallet == 'undefined') {
-        console.log('OKX is not installed!');
-        alert('OKX is not installed!')
+        console.log('OKX wallet extension is not installed!');
+        alert('OKX wallet extension is not installed!')
         return
      }
 
@@ -114,6 +114,9 @@ function formatAccount(account) {
  // 当点击购买按钮时，显示对话框
  buyButton.onclick = function() {
     modal.style.display = "block";
+    modal.style.justifyContent="center"
+    modal.style.alignItems="center"
+    modal.style.display="flex"
 }
 
 // 当点击关闭按钮时，隐藏对话框
@@ -137,12 +140,12 @@ closeButton.onclick = function() {
 
     var solAmount = document.getElementById("solAmount").value;
     if (solAmount >= 1 && solAmount <= 10) {
-        alert("you choose to buy " + solAmount + " SOL");
+        // alert("you choose to buy " + solAmount + " SOL");
         // 这里你可以添加购买逻辑，如发出请求
         modal.style.display = "none"; // 关闭对话框
 
         //创建一个交易 签名并发送 
-        alert('please create a transation to send')
+        // alert('please create a transation to send')
 
     } else {
         alert("Purchase quantity must be between 1 and 10 SOL!");

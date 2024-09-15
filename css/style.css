@@ -6273,93 +6273,95 @@ body.light-version {
 
 /*输入框*/
  /* Modal Background */
- .modal {
-    display: none; /* Hidden by default */
-    position: fixed; 
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; 
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-/* Modal Content Box */
-.modal-content {
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    padding: 30px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    position: relative; /* Enables positioning of the close button */
-}
+        /* Modal Content Box */
+        .modal-content {
+            background-color: #020a08;
+            border-radius: 10px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            position: relative; /* Enables positioning of the close button */
+        }
 
-/* Close Button - Positioned in the top right corner */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    color: #bbb;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
+        /* Close Button - Positioned in the top right corner */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #bbb;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
 
-.close:hover {
-    color: #fff;
-}
+        .close:hover {
+            color: #fff;
+        }
 
-/* Modal Title */
-.modal h2 {
-    margin-top: 0;
-    color: #f7a600;
-    font-size: 24px;
-}
+        /* Modal Title */
+        .modal h2 {
+            margin-top: 0;
+            color: #f7a600;
+            font-size: 24px;
+        }
 
-/* Label and Input */
-.modal-label {
-    font-size: 16px;
-    color: #f7f7f7;
-    margin-bottom: 10px;
-    display: block;
-}
+        /* Label and Input */
+        .modal-label {
+            font-size: 16px;
+            color: #f7f7f7;
+            margin-bottom: 10px;
+            display: block;
+        }
 
-.modal-input {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    background-color: #2a2a2a;
-    color: #fff;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
+        .modal-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: #2a2a2a;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
 
-/* Confirm Button */
-.modal-button {
-    background-color: #f7a600;
-    color: #000;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    margin-top: 10px;
-}
+        /* Confirm Button */
+        .modal-button {
+            background-color: #f7a600;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
 
-.modal-button:hover {
-    background-color: #d68700;
-}
+        .modal-button:hover {
+            background-color: #d68700;
+        }
 
-/* Dark theme hover effects */
-.modal-input:focus {
-    background-color: #3a3a3a;
-}
+        /* Dark theme hover effects */
+        .modal-input:focus {
+            background-color: #3a3a3a;
+        }
+
+        
