@@ -111,9 +111,9 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
       // { address: string, publicKey: string }
     //   resultDom.innerHTML = result;
       console.log(result);
-      const formatresult=formatAccount(result);
-      console.log(formatresult);
-      button.innerText = formatresult;
+    //   const formatresult=formatAccount(result);
+    //   console.log(formatresult);
+      button.innerText = result;
      
     } catch (error) {
       console.log(error);
