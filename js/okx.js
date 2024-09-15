@@ -77,9 +77,9 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
     //     console.log('OKX Wallet is not installed or enabled.');
     // }
 
-    if (window.solana && window.solana.isPhantom) {
-        console.log("Phantom Wallet is available");
-    }
+    // if (window.solana && window.solana.isPhantom) {
+    //     console.log("Phantom Wallet is available");
+    // }
 
 
     try {
