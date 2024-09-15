@@ -113,10 +113,16 @@ function formatAccount(account) {
 
  // 当点击购买按钮时，显示对话框
  buyButton.onclick = function() {
-    modal.style.display = "block";
-    modal.style.justifyContent="center"
-    modal.style.alignItems="center"
-    modal.style.display="flex"
+    if(connectbtn.innerText.length==44){
+        modal.style.display = "block";
+        modal.style.justifyContent="center"
+        modal.style.alignItems="center"
+        modal.style.display="flex"
+    }else{
+        alert('Please connect to Solana wallet first')
+    }
+   
+    
 }
 
 // 当点击关闭按钮时，隐藏对话框
