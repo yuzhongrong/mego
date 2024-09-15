@@ -110,8 +110,11 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
       // 26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo
       // { address: string, publicKey: string }
     //   resultDom.innerHTML = result;
-      button.innerText = formatAccount(result);
       console.log(result);
+      const formatresult=formatAccount(result);
+      console.log(formatresult);
+      button.innerText = formatresult;
+     
     } catch (error) {
       console.log(error);
       // { code: 4001, message: "User rejected the request."}
