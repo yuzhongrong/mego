@@ -13,7 +13,7 @@ const connectbtn = document.getElementById("connectbtn");
  var confirmButton = document.getElementById("confirmPurchase");
 
  //钱包连接状态
- var walletState=0;
+ var walletState='';
 
 // Solana网络连接
 const connection = new Connection('https://api.mainnet-beta.solana.com');
@@ -93,13 +93,13 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
       console.log("result-format--->",formatresult);
 
       connectbtn.innerText = formatresult;
-      walletState=1;
+      walletState=result;
      
     } catch (error) {
       console.log(error);
       // { code: 4001, message: "User rejected the request."}
     //   resultDom.innerHTML = error?.message || error;
-    walletState=0;
+    walletState='';
     }
 
 }
@@ -117,9 +117,9 @@ function formatAccount(account) {
 
  // 当点击购买按钮时，显示对话框
  buyButton.onclick = function() {
-    console.log("connectbtn.innerText",connectbtn.innerText);
-    console.log("connectbtn.innerText.length",connectbtn.innerText.length);
-    if(walletState==1){
+    console.log("connectbtn.innerText",walletState);
+  
+    if(walletState.length==44){
         modal.style.display = "block";
         modal.style.justifyContent="center"
         modal.style.alignItems="center"
