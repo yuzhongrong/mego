@@ -146,7 +146,7 @@ function formatAccount(account) {
   
     const walletState=localStorage.getItem("walletState")
     if(walletState==1){
-        modal.style.display = "block";
+        modal.style.display = "flex";
         modal.style.justifyContent="center"
         modal.style.alignItems="center"
       
