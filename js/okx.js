@@ -24,8 +24,9 @@ const connection = new Connection('https://api.mainnet-beta.solana.com');
 
 window.onload = function() {
     const walletState=localStorage.getItem("walletState")
+    const address=localStorage.getItem("accountAddress")
     if(walletState==1){
-        const accountFormatAddress=localStorage.getItem("accountFormatAddress")
+        const accountFormatAddress=formatAccount(address)
         if(accountFormatAddress){
             connectbtn.innerText=accountFormatAddress
         }
@@ -122,7 +123,7 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
       connectbtn.innerText = formatresult;
       localStorage.setItem("walletState",1)
       localStorage.setItem("accountAddress",result)
-      localStorage.setItem("accountFormatAddress",formatresult)
+     
      
     } catch (error) {
       console.log(error);
@@ -132,6 +133,24 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
     }
 
 }
+
+//钱包断开连接
+window.okxwallet.solana.on("disconnect", () => {
+  console.log("disconnected!")
+  localStorage.setItem("walletState",0)
+  localStorage.setItem("accountAddress",'')
+  connectbtn.innerText = 'Connect Wallet';
+
+});
+
+
+
+//钱包断开连接
+window.okxwallet.solana.on("connect", () => {
+  console.log("connected!")
+  
+});
+
 
 function formatAccount(account) {
     if (account.length <= 8) {
