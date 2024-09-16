@@ -36,7 +36,7 @@ window.onload = function() {
     modal.style.display = "none";
     modal.style.justifyContent="center"
     modal.style.alignItems="center"
-    modal.style.display="flex"
+
 
 }
 
@@ -118,7 +118,7 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
 
       connectbtn.innerText = formatresult;
       localStorage.setItem("walletState",1)
-      localStorage.setItem("accountAddress",result)
+      localStorage.setItem("accountAddress",formatresult)
    
      
     } catch (error) {
@@ -149,12 +149,12 @@ function formatAccount(account) {
         modal.style.display = "block";
         modal.style.justifyContent="center"
         modal.style.alignItems="center"
-        modal.style.display="flex"
+      
        }else{
         modal.style.display = "none";
         modal.style.justifyContent="center"
         modal.style.alignItems="center"
-        modal.style.display="flex"
+    
         alert('Please connect to Solana wallet first')
 
         
