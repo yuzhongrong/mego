@@ -126,7 +126,7 @@ function formatAccount(account) {
     modal.style.display="flex"
    }else{
         alert('Please connect to Solana wallet first')
-       
+    
     }
    
     
