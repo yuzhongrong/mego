@@ -57,6 +57,7 @@ window.onload = function() {
   // 创建转账交易 (与之前一样)
 async function createTransferTransaction(walletAddress, amountInLamports) {
     console.log("--transation-walletAddress--->",walletAddress)
+    console.log("--transation-amountInLamports--->",amountInLamports)
     const transaction = new Transaction().add(
       SystemProgram.transfer({
         fromPubkey: new PublicKey(walletAddress),   // 用户的 Solana 地址
