@@ -25,9 +25,9 @@ const connection = new Connection('https://api.mainnet-beta.solana.com');
 window.onload = function() {
     const walletState=localStorage.getItem("walletState")
     if(walletState==1){
-        const accountAddress=localStorage.getItem("accountAddress")
-        if(accountAddress){
-            connectbtn.innerText=accountAddress
+        const accountFormatAddress=localStorage.getItem("accountFormatAddress")
+        if(accountFormatAddress){
+            connectbtn.innerText=accountFormatAddress
         }
        
     }
@@ -120,8 +120,8 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
 
       connectbtn.innerText = formatresult;
       localStorage.setItem("walletState",1)
-      localStorage.setItem("accountAddress",formatresult)
-   
+      localStorage.setItem("accountAddress",result)
+      localStorage.setItem("accountFormatAddress",formatresult)
      
     } catch (error) {
       console.log(error);
