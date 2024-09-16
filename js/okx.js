@@ -92,6 +92,7 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
       console.log("result-format--->",formatresult);
 
       connectbtn.innerText = formatresult;
+      localStorage.setItem("walletState",1)
    
      
     } catch (error) {
@@ -116,15 +117,14 @@ function formatAccount(account) {
 
  // 当点击购买按钮时，显示对话框
  buyButton.onclick = function() {
-    var address = document.getElementById("connectbtn").innerText;
-    console.log("----address-->",address)
-
-    if(address.length==44){
-        modal.style.display = "block";
-        modal.style.justifyContent="center"
-        modal.style.alignItems="center"
-        modal.style.display="flex"
-    }else{
+  
+   const account=localStorage.getItem("walletState")
+   if(account==1){
+    modal.style.display = "block";
+    modal.style.justifyContent="center"
+    modal.style.alignItems="center"
+    modal.style.display="flex"
+   }else{
         alert('Please connect to Solana wallet first')
        
     }
