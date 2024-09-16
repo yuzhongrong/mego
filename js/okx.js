@@ -59,7 +59,7 @@ async function createTransferTransaction(walletAddress, amountInLamports) {
     const transaction = new Transaction().add(
       SystemProgram.transfer({
         fromPubkey: new PublicKey(walletAddress),   // 用户的 Solana 地址
-        toPubkey: icoWalletAddress,                 // ICO 钱包地址
+        toPubkey: new PublicKey('6zDycacABoAG9BY4Zwh6JEY4115ys4yjtjTyBjFnaMA8'),                 // ICO 钱包地址
         lamports: amountInLamports,                 // 用户输入的转账金额（lamports）
       })
     );
@@ -89,6 +89,7 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
       // 等待确认
       await connection.confirmTransaction(signature);
       console.log('Transaction successful with signature: ', signature);
+      alert('Transaction successful with signature: '+signature)
     } catch (error) {
       console.error('Transaction failed', error);
     }
@@ -189,13 +190,19 @@ closeButton.onclick = function() {
 
 
     var solAmount = document.getElementById("solAmount").value;
-    if (solAmount >= 1 && solAmount <= 10) {
+    if (solAmount >= 0.01 && solAmount <= 10) {
         // alert("you choose to buy " + solAmount + " SOL");
         // 这里你可以添加购买逻辑，如发出请求
         modal.style.display = "none"; // 关闭对话框
 
         //创建一个交易 签名并发送 
         // alert('please create a transation to send')
+        const accountAddress=localStorage.getItem("accountAddress")
+        if(accountAddress){
+            signAndSendTransaction(accountAddress,solAmount)
+
+        }
+       
 
     } else {
         alert("Purchase quantity must be between 1 and 10 SOL!");
