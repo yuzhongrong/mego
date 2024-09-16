@@ -191,7 +191,7 @@ closeButton.onclick = function() {
 
     var solAmount = document.getElementById("solAmount").value;
     if (solAmount >= 0.01 && solAmount <= 10) {
-        // alert("you choose to buy " + solAmount + " SOL");
+  
         // 这里你可以添加购买逻辑，如发出请求
         modal.style.display = "none"; // 关闭对话框
 
