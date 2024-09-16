@@ -119,6 +119,7 @@ function formatAccount(account) {
  buyButton.onclick = function() {
   
    const account=localStorage.getItem("walletState")
+   console.log("buy-click",account)
    if(account==1){
     modal.style.display = "block";
     modal.style.justifyContent="center"
