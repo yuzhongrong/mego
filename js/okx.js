@@ -17,6 +17,31 @@ const connectbtn = document.getElementById("connectbtn");
 // Solana网络连接
 const connection = new Connection('https://api.mainnet-beta.solana.com');
 
+
+
+
+//初始化页面事件
+
+window.onload = function() {
+    const walletState=localStorage.getItem("walletState")
+    if(walletState==1){
+        const accountAddress=localStorage.getItem("accountAddress")
+        if(accountAddress){
+            connectbtn.innerText=accountAddress
+        }
+       
+    }
+
+    //默认情况不现实dialog
+    modal.style.display = "none";
+    modal.style.justifyContent="center"
+    modal.style.alignItems="center"
+    modal.style.display="flex"
+
+}
+
+
+
  // 检查 OKX 或 Solana 钱包是否已经安装
  const checkWallet = async () => {
     if (typeof window.okxwallet !== 'undefined') {
@@ -93,6 +118,7 @@ async function signAndSendTransaction(walletAddress, amountInSol) {
 
       connectbtn.innerText = formatresult;
       localStorage.setItem("walletState",1)
+      localStorage.setItem("accountAddress",result)
    
      
     } catch (error) {
@@ -118,20 +144,30 @@ function formatAccount(account) {
  // 当点击购买按钮时，显示对话框
  buyButton.onclick = function() {
   
-   const account=localStorage.getItem("walletState")
-   console.log("buy-click",account)
-   if(account==1){
-    modal.style.display = "block";
-    modal.style.justifyContent="center"
-    modal.style.alignItems="center"
-    modal.style.display="flex"
-   }else{
+    const walletState=localStorage.getItem("walletState")
+    if(walletState==1){
+        modal.style.display = "block";
+        modal.style.justifyContent="center"
+        modal.style.alignItems="center"
+        modal.style.display="flex"
+       }else{
+        modal.style.display = "none";
+        modal.style.justifyContent="center"
+        modal.style.alignItems="center"
+        modal.style.display="flex"
         alert('Please connect to Solana wallet first')
-    
-    }
+
+        
+        }
+
    
     
 }
+
+
+
+
+
 
 // 当点击关闭按钮时，隐藏对话框
 closeButton.onclick = function() {
