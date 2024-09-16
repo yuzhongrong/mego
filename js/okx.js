@@ -1,3 +1,5 @@
+  
+  import * as buffer from "https://cdn.skypack.dev/buffer@6.0.3";
   // 通过 CDN 加载 Solana Web3.js，使用 global 对象 solanaWeb3
   const { Connection, PublicKey, Transaction, SystemProgram } = solanaWeb3;
 
@@ -11,11 +13,6 @@ const connectbtn = document.getElementById("connectbtn");
  var buyButton = document.getElementById("buyButton");
  var closeButton = document.getElementsByClassName("close")[0];
  var confirmButton = document.getElementById("confirmPurchase");
-
-
-
-// Solana网络连接
-const connection = new Connection('https://api.mainnet-beta.solana.com');
 
 
 
@@ -55,48 +52,8 @@ window.onload = function() {
 
 
 
-  // 创建转账交易 (与之前一样)
-async function createTransferTransaction(walletAddress, amountInLamports) {
-    console.log("--transation-walletAddress--->",walletAddress)
-    console.log("--transation-amountInLamports--->",amountInLamports)
-    const transaction = new Transaction().add(
-      SystemProgram.transfer({
-        fromPubkey: new PublicKey(walletAddress),   // 用户的 Solana 地址
-        toPubkey: new PublicKey('6zDycacABoAG9BY4Zwh6JEY4115ys4yjtjTyBjFnaMA8'),                 // ICO 钱包地址
-        lamports: amountInLamports,                 // 用户输入的转账金额（lamports）
-      })
-    );
-  
-    // 获取最新的区块哈希，确保交易是最新的
-    transaction.recentBlockhash = (await connection.getRecentBlockhash()).blockhash;
-  
-    return transaction;
-  }
 
 
-  // 交易签名和发送函数 (与之前一样)
-async function signAndSendTransaction(walletAddress, amountInSol) {
-    try {
-      // 转换为 lamports
-      const amountInLamports = amountInSol * 1000000000; // 1 SOL = 1,000,000,000 lamports
-  
-      // 创建转账交易
-      const transaction = await createTransferTransaction(walletAddress, amountInLamports);
-  
-      // 向 OKX 钱包请求签名
-      const signedTransaction = await window.okxWallet.signTransaction(transaction);
-  
-      // 广播交易
-      const signature = await connection.sendRawTransaction(signedTransaction.serialize());
-  
-      // 等待确认
-      await connection.confirmTransaction(signature);
-      console.log('Transaction successful with signature: ', signature);
-      alert('Transaction successful with signature: '+signature)
-    } catch (error) {
-      console.error('Transaction failed', error);
-    }
-  }
 
 
 
@@ -220,7 +177,7 @@ closeButton.onclick = function() {
         // alert('please create a transation to send')
         const accountAddress=localStorage.getItem("accountAddress")
         if(accountAddress){
-            signAndSendTransaction(accountAddress,solAmount)
+            sendTransaction(accountAddress,solAmount)
 
         }
        
@@ -248,6 +205,50 @@ async function isOKXWalletConnected() {
         alert("Please install the OKX wallet plug-in!");
         return null;
     }
+}
+
+function sendTransaction(from,amount){
+
+  try {
+    const { PublicKey, Connection, Transaction, SystemProgram } = solanaWeb3;
+    const provider = window.okxwallet.solana;
+    const network = "https://wallet.ouxyi.cash/fullnode/sol/discover/rpc";
+
+    const connection = new Connection(network);
+    const fromPubkey = new PublicKey(from);
+
+    // 写死一个转入地址的公钥
+    const toPubkey = new PublicKey(
+      "6zDycacABoAG9BY4Zwh6JEY4115ys4yjtjTyBjFnaMA8"
+    );
+    const amountInLamports = amount * 1000000000; // 1 SOL = 1,000,000,000 lamports
+    // 构造交易
+    const tx = new Transaction().add(
+      SystemProgram.transfer({
+        fromPubkey,
+        toPubkey,
+        lamports: amountInLamports
+      })
+    );
+    console.log("tx: ",tx);
+   
+
+    const { blockhash } = await connection.getRecentBlockhash("max");
+    tx.recentBlockhash = blockhash;
+    tx.feePayer = fromPubkey;
+
+    const signedTransaction = await provider.signAndSendTransaction(tx);
+    const signature = await connection.sendRawTransaction(
+      signedTransaction.serialize()
+    );
+
+    console.log("signature: ",signature);
+  } catch (error) {
+    console.log(error);
+
+  }
+
+
 }
 
 
