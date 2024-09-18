@@ -282,10 +282,10 @@ async function sendTransaction(from,amount){
 
 function showSendTxAlert(signature) {
   Swal.fire({
-      title: 'Copy the text below',
+      title: 'Send Result',
       html: `<input type="text" value="${signature}" id="copyText" readonly style="width: 100%;">`,
       showCancelButton: true,
-      confirmButtonText: 'Copy Text',
+      confirmButtonText: 'Copy',
       cancelButtonText: 'Close',
       preConfirm: () => {
           var copyText = document.getElementById("copyText");
