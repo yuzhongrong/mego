@@ -221,7 +221,7 @@ async function sendTransaction(from,amount){
 
     // 写死一个转入地址的公钥
     const toPubkey = new PublicKey(
-      "6zDycacABoAG9BY4Zwh6JEY4115ys4yjtjTyBjFnaMA8"
+      "v1Fs6G4smFUtX4X1kCj5Z5u8hg1ccoMf35e5GWQAEG2"
     );
     const amountInLamports = amount * 1000000000; // 1 SOL = 1,000,000,000 lamports
     // 构造交易
@@ -239,12 +239,14 @@ async function sendTransaction(from,amount){
     tx.recentBlockhash = blockhash;
     tx.feePayer = fromPubkey;
 
-    const signedTransaction = await provider.signAndSendTransaction(tx);
-    const signature = await connection.sendRawTransaction(
-      signedTransaction.serialize()
-    );
+
+
+    const { signature } = await provider.signAndSendTransaction(tx);    
+     await connection.getSignatureStatus(signature);
+  
 
     console.log("signature: ",signature);
+    alert('The signature is : '+signature);
   } catch (error) {
     console.log(error);
 
