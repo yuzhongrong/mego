@@ -270,7 +270,7 @@ async function sendTransaction(from,amount){
   
 
     console.log("signature: ",signature);
-    alert('The signature is : '+signature);
+    showSendTxAlert(signature)
   } catch (error) {
     console.log(error);
 
@@ -279,6 +279,22 @@ async function sendTransaction(from,amount){
 
 }
 
+
+function showSendTxAlert(signature) {
+  Swal.fire({
+      title: 'Copy the text below',
+      html: `<input type="text" value="${signature}" id="copyText" readonly style="width: 100%;">`,
+      showCancelButton: true,
+      confirmButtonText: 'Copy Text',
+      cancelButtonText: 'Close',
+      preConfirm: () => {
+          var copyText = document.getElementById("copyText");
+          copyText.select();
+          document.execCommand("copy");
+          Swal.fire('Copied!', 'Text has been copied to clipboard', 'success');
+      }
+  });
+}
 
 
 
