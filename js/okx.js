@@ -110,6 +110,17 @@ window.okxwallet.solana.on("connect", () => {
   
 });
 
+//钱包变更连接
+window.okxwallet.solana.on('accountChanged', (publicKey) => {
+  if (publicKey) {
+      // Set new public key and continue as usual
+      console.log(`Switched to account ${publicKey.toBase58()}`);
+
+      localStorage.setItem("accountAddress",publicKey.toBase58());
+      connectbtn.innerText =formatAccount(publicKey.toBase58());
+  }
+});
+
 
 function formatAccount(account) {
     if (account.length <= 8) {
