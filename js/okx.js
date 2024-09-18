@@ -11,6 +11,8 @@ const connectbtn = document.getElementById("connectbtn");
  // 获取购买限额弹框
  var modal = document.getElementById("buyModal");
  var buyButton = document.getElementById("buyButton");
+ var buyMoreButton = document.getElementById("buyMoreButton");
+ 
  var closeButton = document.getElementsByClassName("close")[0];
  var confirmButton = document.getElementById("confirmPurchase");
 
@@ -141,6 +143,28 @@ function formatAccount(account) {
 
    
     
+}
+
+buyMoreButton.onclick = function() {
+  
+  const walletState=localStorage.getItem("walletState")
+  if(walletState==1){
+      modal.style.display = "flex";
+      modal.style.justifyContent="center"
+      modal.style.alignItems="center"
+    
+     }else{
+      modal.style.display = "none";
+      modal.style.justifyContent="center"
+      modal.style.alignItems="center"
+  
+      alert('Please connect to Solana wallet first')
+
+      
+      }
+
+ 
+  
 }
 
 
