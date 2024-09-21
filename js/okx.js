@@ -15,6 +15,8 @@ const connectbtn = document.getElementById("connectbtn");
  
  var closeButton = document.getElementsByClassName("close")[0];
  var confirmButton = document.getElementById("confirmPurchase");
+ var receiver_mego = document.getElementById("receiver");
+
 
 
 
@@ -305,6 +307,17 @@ function showSendTxAlert(signature) {
           Swal.fire('Copied!', 'Text has been copied to clipboard', 'success');
       }
   });
+}
+
+
+function updateSolInputAmount() {
+
+  // 获取输入框的值
+ var inputSolAmount = document.getElementById("solAmount").value;
+ //获取mego单价
+ var result=getReceiverMego(inputSolAmount)
+  // 更新其他文本的内容
+  document.getElementById("receiver").innerText = "Receiver $MEGO is:" + result;
 }
 
 
