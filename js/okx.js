@@ -40,6 +40,10 @@ window.onload = function() {
     modal.style.alignItems="center"
 
 
+    //请求预售信息;
+    getPresaleInfo('v1Fs6G4smFUtX4X1kCj5Z5u8hg1ccoMf35e5GWQAEG2')
+
+
 }
 
 
@@ -318,6 +322,54 @@ function updateSolInputAmount() {
  var result=getReceiverMego(inputSolAmount)
   // 更新其他文本的内容
   document.getElementById("receiver").innerText = "Receiver $MEGO is:" + result;
+}
+
+
+   // 发起请求到API
+  async function getPresaleInfo(wallet) {
+            try {
+                const response = await fetch(`http://43.130.227.153:3000/api/wallet/getPresaleInfo?wallet=${wallet}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+
+                if (data.success) {
+                    console.log('Presale Info:', data.data);
+                    displayPresaleInfo(data.data[0]); // 只显示第一条数据
+                } else {
+                    console.error('Error fetching data:', data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+
+function displayPresaleInfo(info){
+
+  //更新价格
+  const presale_price = document.getElementById('presale-price');
+  presale_price.innerText='Price: 1 MEGO=$'+info.price
+  //更新软顶和硬顶
+  const presale_soft=document.getElementById('presale-soft')
+  const presale_hard=document.getElementById('presale-hard')
+  presale_soft.innerText=info.soft+'sol'
+  presale_hard.innerText=info.hard+'sol'
+
+//更新进度
+const presale_progress=document.getElementById('presale-progress')
+presale_progress.style.width=calculatorProgress(info.pool)+'%'
+
+}
+function calculatorProgress(pool){
+
+  // const amount = '200000000';
+  const result = (Number(pool) / 2000)*100;
+  
+  console.log(result);  // 输出: 0.2
+  return result;
+
 }
 
 

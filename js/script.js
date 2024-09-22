@@ -128,8 +128,8 @@
 
 
     $('.simple_timer').syotimer({
-        year: 2024,
-        month: 11,
+        year: 2025,
+        month: 3,
         day: 9,
         hour: 20,
         minute: 30
