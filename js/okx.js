@@ -350,7 +350,10 @@ function displayPresaleInfo(info){
 
   //更新价格
   const presale_price = document.getElementById('presale-price');
-  presale_price.innerText='Price: 1 MEGO=$'+info.price
+  const presale_price_title = document.getElementById('presale-price-title');
+  
+  presale_price.innerText=' 1 MEGO=$'+info.price
+  presale_price_title.innerText=' 1 MEGO=$'+info.price
   //更新软顶和硬顶
   const presale_soft=document.getElementById('presale-soft')
   const presale_hard=document.getElementById('presale-hard')
