@@ -15,7 +15,7 @@ const connectbtn = document.getElementById("connectbtn");
  
  var closeButton = document.getElementsByClassName("close")[0];
  var confirmButton = document.getElementById("confirmPurchase");
- var receiver_mego = document.getElementById("receiver");
+//  var receiver_mego = document.getElementById("receiver");
 
 
 
