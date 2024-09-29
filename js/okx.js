@@ -328,7 +328,7 @@ function updateSolInputAmount() {
    // 发起请求到API
   async function getPresaleInfo(wallet) {
             try {
-                const response = await fetch(`https://43.130.227.153:3000/api/wallet/getPresaleInfo?wallet=${wallet}`);
+                const response = await fetch(`https://www.mego.run/api/wallet/getPresaleInfo?wallet=${wallet}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
