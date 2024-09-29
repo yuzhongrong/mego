@@ -224,7 +224,7 @@ closeButton.onclick = function() {
        
 
     } else {
-        alert("Purchase quantity must be between 1 and 10 SOL!");
+        alert("Purchase quantity must be between 1 and 100 SOL!");
     }
 }
 
