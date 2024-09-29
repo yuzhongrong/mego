@@ -336,7 +336,7 @@ function updateSolInputAmount() {
 
                 if (data.success) {
                     console.log('Presale Info:', data.data);
-                    displayPresaleInfo(data); // 只显示第一条数据
+                    displayPresaleInfo(data.data); // 只显示第一条数据
                 } else {
                     console.error('Error fetching data:', data.message);
                 }
