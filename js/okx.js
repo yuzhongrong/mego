@@ -255,7 +255,8 @@ async function sendTransaction(from,amount){
     window.Buffer = buffer.Buffer;
     const { PublicKey, Connection, Transaction, SystemProgram } = solanaWeb3;
     const provider = window.okxwallet.solana;
-    const network = "https://wallet.ouxyi.cash/fullnode/sol/discover/rpc";
+    // const network = "https://wallet.ouxyi.cash/fullnode/sol/discover/rpc";
+    const network = "https://cool-fabled-sunset.solana-mainnet.quiknode.pro/c8a4ab4b17d97fe368d950bf19673c593192e653";
 
     const connection = new Connection(network);
     const fromPubkey = new PublicKey(from);
